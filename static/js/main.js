@@ -8,6 +8,7 @@ var uploadText = document.getElementById("uploadValue");        //Upload Number
 var downloadText = document.getElementById("downloadValue");    //Download Number
 var pingText = document.getElementById("pingValue");            //Ping Number
 var jitterText = document.getElementById("jitterValue");        //Jitter Number
+var ipaddr = document.getElementById("ipaddress");              //IP Address
 var isTesting = false;                                          //Check if the test is being run
 
 //Change the status bar of the Upload Element
@@ -58,6 +59,11 @@ function updateTestButton(status) {
 //Change clear button visibility
 function updateClearButton(status) {
     clearbutton.style.display = status;
+}
+
+//Change the ip address
+function updateIP(address) {
+    ipaddr.textContent = address;
 }
 
 //Hids the Progress Bars
@@ -161,3 +167,18 @@ clearbutton.onclick = function () {
     clearStatus();
     updateClearButton("none")
 }
+
+function getIP() {
+    var Http = new XMLHttpRequest();
+    const url = "http://192.168.86.175:8080/ip";
+    Http.open("GET", url);
+    Http.send();
+
+    Http.onreadystatechange=function() {
+        if(this.readyState==4 && this.status==200) {
+            updateIP("IP: " + Http.responseText)
+        }
+    }
+}
+
+getIP()

@@ -7,31 +7,53 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="/assets/js/main.js"></script>
   </head>
   <body>
-      <nav class="navbar is-link" role="navigation" arial-lable="main navigation">
-          <div class="navbar-brand">
-              <a class="navbar-item" href="/">SpeedTest</a>
-          </div>
-      </nav>
-      <div class="level is-vcentered">
+        <nav class="level" style="background-color: blue">
+            <div class="level-item has-text-centered">
+                <p style="color: white">SpeedTest</p>
+            </div>
+        </nav>
+        <div class="level" id="button">
+                <div class="level-item has-text-centered">
+                    <div>
+                        <a class="button is-dark" id="testButton">Start Test</a>
+                        <a class="button is-dark" id="clearButton">Clear Test</a>
+                    </div>
+                    
+                </div>
+        </div>
+      <div class="level" id="stats">
           <div class="level-item has-text-centered">
               <div>
-                  <p class="heading">Upload</p>
-                  <progress class="progress" value="30" max="100">30%</progress>
+                  <p>Upload</p>
+                  <p id="uploadValue">0</p>
+                  <progress class="progress" id="upload" max="100"></progress>
               </div>
           </div>
           <div class="level-item has-text-centered">
                 <div>
-                    <p class="heading">Download</p>
-                    <progress class="progress" max="100">30%</progress>
+                    <p>Download</p>
+                    <p id="downloadValue">0</p>
+                    <progress id="download" class="progress" max="100"></progress>
                 </div>
            </div>
            <div class="level-item has-text-centered">
                 <div>
-                    <p class="heading">Ping</p>
+                    <p>Ping</p>
+                    <p id="pingValue">0</p>
+                    <progress id="ping" class="progress" max="100"></progress>
                 </div>
             </div>
+            <div class="level-item has-text-centered">
+                    <div>
+                        <p>Jitter</p>
+                        <p id="jitterValue">0</p>
+                        <progress id="jitter" class="progress" max="100"></progress>
+                    </div>
+                </div>
       </div>
+      <script src="/assets/js/main.js"></script>
   </body>
 </html>

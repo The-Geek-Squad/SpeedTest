@@ -3,6 +3,35 @@ html {
     overflow-y: hidden;
 }
 
-.level {
-    margin-top: 20%;
+#stats {
+    margin-top: 10%;
+}
+
+#button {
+    margin-top: 5%;
+}
+
+#clearButton {
+    display: none;
+}
+
+#upload {
+    visibility: hidden;
+}
+
+#download {
+    visibility: hidden;
+}
+
+#ping {
+    visibility: hidden;
+}
+
+#jitter {
+    visibility: hidden;
+}
+
+p {
+    font-weight: bold;
+    font-size: 30px;
 }

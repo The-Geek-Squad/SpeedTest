@@ -119,20 +119,90 @@ function testDownload() {
 
 //TODO - Get client to test ping
 //Test the ping of the client to server
-function testPing() {
-    updatePingText(Math.floor(Math.random() * 100) + 1);
+async function testPing() {
+    var startTime, endTime;
+    var result1 = 0;
+    var result2 = 0;
+    var result3 = 0;
+    var result4 = 0;
+    var result5 = 0;
+    var ping;
+    
+    startTime = (new Date()).getTime();
+    await doPing();
+    endTime = (new Date()).getTime();
+    result1 = (endTime - startTime);
+    startTime = (new Date()).getTime();
+    await doPing();
+    endTime = (new Date()).getTime();
+    result2 = (endTime - startTime);
+
+    startTime = (new Date()).getTime();
+    await doPing();
+    endTime = (new Date()).getTime();
+    result3 = (endTime - startTime);
+
+    startTime = (new Date()).getTime();
+    await doPing();
+    endTime = (new Date()).getTime();
+    result4 = (endTime - startTime);
+
+    startTime = (new Date()).getTime();
+    await doPing();
+    endTime = (new Date()).getTime();
+    result5 = (endTime - startTime);
+
+
+    var ping = (result1 + result2 + result3 + result4 + result5) / 5;
+    updatePingText(Math.round(ping));
+    checkJitter(result1, result2, result3, result4, result5);
+
 }
 
-//TODO - Get client to test jitter
-//Test the jitter to the server
-function testJitter() {
-    updateJitterText(Math.floor(Math.random() * 100) + 1);
+function checkJitter(result1, result2, result3, result4, result5) {
+    var j1 = difference(result1, result2);
+    var j2 = difference(result3, result2);
+    var j3 = difference(result3, result4);
+    var j4 = difference(result4, result5);
+
+    var jitter = (j1 + j2 + j3 + j4) / 4;
+
+    updateJitterText(Math.round(jitter))
+
+}
+
+function difference (a, b) {
+    return Math.abs(a - b);
+}
+
+//Function that test ping
+function doPing() {
+    return new Promise(function (resolve, reject) {
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://192.168.86.175:8080/ping");
+        xhr.onload = function () {
+            if (this.status >= 200 && this.status < 300) {
+                resolve(xhr.response);
+            } else {
+                reject({
+                    status: this.status,
+                    statusText: xhr.statusText
+                });
+            }
+        };
+        xhr.onerror - function () {
+            reject({
+                status: this.status,
+                statusText: xhr.statusText
+            });
+        };
+        xhr.send();
+    })
 }
 
 //Executes the test
 function startTest() {
     testPing();
-    testJitter();
     updateBars();
     testUpload();
     testDownload();

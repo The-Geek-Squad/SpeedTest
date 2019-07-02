@@ -104,17 +104,11 @@ function clearStatus() {
 //TODO - Get client to test upload speed
 //Test the upload speed of client
 function testUpload() {
-    for (i = 0; i <= Math.floor(Math.random() * 100) + 1; i++) {
-        updateUploadText(i);
-    }
 }
 
 //TODO - Get client to test download speed
 //Test the download speed of client
 function testDownload() {
-    for (i = 0; i <= Math.floor(Math.random() * 100) + 1; i++) {
-        updateDownloadText(i);
-    }
 }
 
 //TODO - Get client to test ping
@@ -154,7 +148,7 @@ async function testPing() {
 
 
     var ping = (result1 + result2 + result3 + result4 + result5) / 5;
-    updatePingText(Math.round(ping));
+    updatePingText(Math.round(ping) + " MS");
     checkJitter(result1, result2, result3, result4, result5);
 
 }
@@ -167,7 +161,7 @@ function checkJitter(result1, result2, result3, result4, result5) {
 
     var jitter = (j1 + j2 + j3 + j4) / 4;
 
-    updateJitterText(Math.round(jitter))
+    updateJitterText(Math.round(jitter) + " MS")
 
 }
 
@@ -202,9 +196,9 @@ function doPing() {
 
 //Executes the test
 function startTest() {
+    updateBars();
     getIP();
     testPing();
-    updateBars();
     testUpload();
     testDownload();
 

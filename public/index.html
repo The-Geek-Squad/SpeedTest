@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="/assets/css/main.css">
-    <script src="/assets/js/main.js"></script>
   </head>
   <body>
         <nav class="level" style="background-color: blue">
@@ -23,13 +22,13 @@
             </div>
         </div>
         <div class="level" id="button">
-                <div class="level-item has-text-centered">
-                    <div>
-                        <a class="button is-dark" id="testButton">Start Test</a>
-                        <a class="button is-dark" id="clearButton">Clear Test</a>
-                    </div>
-                    
+            <div class="level-item has-text-centered">
+                <div>
+                    <a class="button is-dark" id="testButton">Start Test</a>
+                    <a class="button is-dark" id="clearButton">Clear Test</a>
                 </div>
+                
+            </div>
         </div>
       <div class="level" id="stats">
           <div class="level-item has-text-centered">
@@ -54,13 +53,18 @@
                 </div>
             </div>
             <div class="level-item has-text-centered">
-                    <div>
-                        <p>Jitter</p>
-                        <p id="jitterValue">0</p>
-                        <progress id="jitter" class="progress" max="100"></progress>
-                    </div>
+                <div>
+                    <p>Jitter</p>
+                    <p id="jitterValue">0</p>
+                    <progress id="jitter" class="progress" max="100"></progress>
                 </div>
+            </div>
       </div>
+      <!-- <div class="level" id="about">
+            <div class="level-item has-text-centered">
+                <p>About </p>
+            </div>
+      </div> -->
       <script src="/assets/js/main.js"></script>
   </body>
 </html>

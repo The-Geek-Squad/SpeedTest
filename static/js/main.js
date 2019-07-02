@@ -202,6 +202,7 @@ function doPing() {
 
 //Executes the test
 function startTest() {
+    getIP();
     testPing();
     updateBars();
     testUpload();
@@ -250,5 +251,3 @@ function getIP() {
         }
     }
 }
-
-getIP()
